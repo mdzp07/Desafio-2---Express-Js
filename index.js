@@ -6,12 +6,12 @@ const fs = require('fs')
 app.listen(3000, console.log("El servidor está encendido 👍"))
 app.use(express.json()) // Para poder manipular el payload
 
+// Requerimiento N° 2 del desafio - Devolver una página web como respuesta a una consulta GET
+
 app.get('/canciones', (req, res) => {
     const canciones = JSON.parse(fs.readFileSync('repertorio.json', 'utf8'))
     res.json(canciones);
 })
-
-// Requerimiento N° 2 del desafio - Devolver una página web como respuesta a una consulta GET
 
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/index.html")
